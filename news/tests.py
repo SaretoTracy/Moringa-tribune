@@ -12,3 +12,21 @@ class EditorTestClass(TestCase):
         
     def test_instance(self):
         self.assertTrue(isinstance(self.james,Editor))
+        # Testing Save Method
+    def test_save_method(self):
+        self.james.save_editor()
+        editors = Editor.objects.all()
+        self.assertTrue(len(editors) > 0)
+                # Testing Save Method
+    # def test_delete_method(self):
+    #     self.james.delete_editor()
+    #     editors = Editor.objects.all()
+    #     self.assertTrue(len(editors) - 1)
+
+    def test_delete_method(self): #fourth test
+            '''
+            test_delete_user to test if we can remove a user from our userlist
+            '''
+            self.james.delete_editor()
+            editors = Editor.objects.all()
+            self.assertTrue(len(editors) - 1)

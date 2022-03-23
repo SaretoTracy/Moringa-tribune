@@ -15,6 +15,11 @@ class Editor(models.Model):
 
     def __str__(self):
         return self.first_name
+
+    def save_editor(self):
+        self.save()
+    def delete_editor(self):
+        self.delete()
 class tags(models.Model):
     name = models.CharField(max_length =30)
 

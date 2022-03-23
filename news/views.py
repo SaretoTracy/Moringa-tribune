@@ -48,3 +48,4 @@ def past_days_news(request,past_date):
         return redirect(news_of_day)
 
     return render(request, 'all-news/past-news.html', {"date": date})
+
