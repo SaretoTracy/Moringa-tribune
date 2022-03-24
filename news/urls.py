@@ -7,5 +7,6 @@ register_converter(UrlDateConverter,'date')
 urlpatterns = [
     # path('',views.welcome,name = 'welcome'),
     path('',views.news_of_day,name='newsToday'),
-    path('archives/<date:past_date>/',views.past_days_news,name = 'pastNews')
+    path('archives/<date:past_date>/',views.past_days_news,name = 'pastNews'),
+    path (r'^search/', views.search_results, name='search_results')
 ]
