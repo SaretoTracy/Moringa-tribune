@@ -14,7 +14,7 @@ def news_of_day(request):
      # FUNCTION TO CONVERT DATE OBJECT TO FIND EXACT DAY
     day = convert_dates(date)
     news = Article.todays_news()
-    return render(request, 'all-news/today-news.html', {"date": date})
+    return render(request, 'all-news/today-news.html',{"date": date, "news": news})
 
 
 def convert_dates(dates):
@@ -29,24 +29,18 @@ def convert_dates(dates):
     return day
 
 def past_days_news(request,past_date):
-
-    # try:
-
-    #     # Converts data from the string Url
-        date = past_date
-
+    try:
+        # Converts data from the string Url
+        date =  past_date
         day = convert_dates(past_date)
-        # except ValueError:
-        #     # Raise 404 error when ValueError is thrown
-        #     raise Http404()
-        #     assert False
-
-        if date == dt.date.today():
-            return redirect(news_of_day)
-
-        news = Article.days_news(date)
-        return render(request, 'all-news/past-news.html',{"date": date,"news":news})
-
+    except ValueError:
+        # Raise 404 error when ValueError is thrown
+        raise Http404()
+        assert False
+    if date == dt.date.today():
+        return redirect(news_of_day)
+    news= Article.days_news(date)
+    return render(request, 'all-news/past-news.html', {"date": date, "news": news})
 def search_results(request):
 
     if 'article' in request.GET and request.GET["article"]:
