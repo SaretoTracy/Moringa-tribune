@@ -13,7 +13,7 @@ def news_of_day(request):
      # FUNCTION TO CONVERT DATE OBJECT TO FIND EXACT DAY
     day = convert_dates(date)
     news = Article.todays_news()
-    return render(request, 'all-news/today-news.html', {"date": date,"news":news})
+    return render(request, 'all-news/today-news.html', {"date": date})
 
 
 def convert_dates(dates):
