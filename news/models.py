@@ -51,3 +51,7 @@ class Article(models.Model):
         image= cls.objects.filter(tags__tags__icontains=tags)
         return image
 
+class NewsLetterRecipients(models.Model):
+    name = models.CharField(max_length = 30)
+    email = models.EmailField()
+
