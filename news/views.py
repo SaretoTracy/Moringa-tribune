@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http  import HttpResponse
 import datetime as dt
+from .forms import NewsLetterForm
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Article
 from django.shortcuts import render
@@ -14,7 +15,14 @@ def news_of_day(request):
      # FUNCTION TO CONVERT DATE OBJECT TO FIND EXACT DAY
     day = convert_dates(date)
     news = Article.todays_news()
-    return render(request, 'all-news/today-news.html',{"date": date, "news": news})
+    if request.method == 'POST':
+        form = NewsLetterForm(request.POST)
+        if form.is_valid():
+            print('valid')
+    else:
+        form = NewsLetterForm()
+
+    return render(request, 'all-news/today-news.html',{"date": date, "news": news, "letterForm":form})
 
 
 def convert_dates(dates):
@@ -60,3 +68,6 @@ def article(request,article_id):
     except ObjectDoesNotExist:
         raise Http404()
     return render(request,"all-news/article.html", {"article":article})
+
+
+  
