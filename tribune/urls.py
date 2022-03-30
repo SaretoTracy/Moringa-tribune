@@ -21,3 +21,4 @@ urlpatterns = [
     path('',include('news.urls')),
     
 ]
+

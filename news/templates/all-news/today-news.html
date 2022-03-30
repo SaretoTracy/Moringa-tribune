@@ -6,10 +6,17 @@
         <!-- displaying News articles -->
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <h2 class="text-center"> {{ news_item.title }} </h2>
+            <h2 class="text-center"> {{ news_item.editor }} </h2>
+            <h2 class="text-center"> {{ news_item.tags }} </h2>
+            <div class="kim">
+
+            </div>
         </div>
+
         <!--Display news Article images  -->
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="margin-top: 10px; ">
-            <a href=""> <img src="{{news_item.article_image.url}}" class="img-responsive" alt="Image" style="height: 200px; width: 300px; ">
+            <a href="">
+                <p src="{{news_item.article_image.url}}" class="img-responsive" alt="Image" style="height: 200px; width: 300px; "></p>
             </a>
         </div>
     </div>
