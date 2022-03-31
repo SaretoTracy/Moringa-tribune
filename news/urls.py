@@ -1,4 +1,4 @@
-from django.urls import path,register_converter
+from django.urls import path,register_converter,include
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -11,7 +11,9 @@ urlpatterns = [
     path('',views.news_of_day,name='newsToday'),
     path('archives/<date:past_date>/',views.past_days_news,name = 'pastNews'),
     path (r'^search/', views.search_results, name='search_results'),
-    path('article/<int:article_id>/',views.article,name ='article')
+    path('article/<int:article_id>/',views.article,name ='article'),
+    path('accounts/', include('django_registration.backends.one_step.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 
 ]
 #serve uploaded images on the development server 
