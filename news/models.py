@@ -1,5 +1,6 @@
 from django.db import models
 import datetime as dt
+from django.contrib.auth.models import User
 
 # Create your models here.
 class UrlDateConverter:
@@ -17,7 +18,7 @@ class tags(models.Model):
 class Article(models.Model):
     title = models.CharField(max_length =60)
     post = models.TextField()
-    editor = models.CharField(max_length =60)
+    editor = models.ForeignKey(User,on_delete=models.CASCADE)
     tags = models.ManyToManyField(tags)
     pub_date = models.DateTimeField(auto_now_add=True)
     article_image = models.ImageField(upload_to = 'articles/',default="")
