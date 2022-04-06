@@ -1,4 +1,4 @@
-{%extends 'all-news/base.html'%} {% load bootstrap5 %}{% block content %} {{block.super}}
+{%extends 'all-news/base.html'%} {% load bootstrap5 %} {% load static %} {% block content %} {{block.super}}
 <div class="container">
     <!-- Looping through news   -->
     {% for news_item in news %}
