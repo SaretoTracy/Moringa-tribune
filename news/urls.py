@@ -14,8 +14,11 @@ urlpatterns = [
     path('article/<int:article_id>/',views.article,name ='article'),
     path('accounts/', include('django_registration.backends.one_step.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('new/article', views.new_article, name='new-article'),
 
 ]
+
+
 #serve uploaded images on the development server 
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
