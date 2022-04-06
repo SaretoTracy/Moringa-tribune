@@ -15,6 +15,7 @@ urlpatterns = [
     path('accounts/', include('django_registration.backends.one_step.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('new/article', views.new_article, name='new-article'),
+    path('ajax/newsletter/', views.newsletter, name='newsletter')
 
 ]
 
