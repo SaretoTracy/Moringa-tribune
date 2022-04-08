@@ -14,6 +14,8 @@ from rest_framework.views import APIView
 from rest_framework import status
 from .models import  MoringaMerch
 from .serializer import MerchSerializer
+from .permissions import IsAuthenticatedOrReadOnly
+
 
 # Create your views here.
 def welcome(request):
@@ -102,6 +104,8 @@ def new_article(request):
     return render(request, 'new_article.html', {"form": form})
 
 class MerchList(APIView):
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
     def get(self, request, format=None):
         all_merch = MoringaMerch.objects.all()
         serializers = MerchSerializer(all_merch, many=True)

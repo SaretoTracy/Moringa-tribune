@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'news.apps.NewsConfig',
     'bootstrap5',
     'tinymce',
-    'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -144,5 +144,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL='newsToday'
+
+#.....
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
 
  
